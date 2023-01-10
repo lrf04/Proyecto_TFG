@@ -28,8 +28,11 @@
             <ul class="navbar-nav">
               <li class="nav-item"><span></span>
                 <div class="logout">
-                  <a href="elegirAño.html" class="nav-link">Menú principal</a>
-                  </div>
+                  <a href="/logout">
+                    <button style="background-color:rgb(32, 30, 30)" ><i class="bi bi-box-arrow-right" href="#"></i></button>
+                  </a>  
+                  
+                </div>
               </li> 
             </ul>
           </div>
@@ -47,6 +50,8 @@
           </div>
         </div>
       </nav>
+
+      @auth
 
 
       <div class="container mt-5">
@@ -139,7 +144,12 @@
 
       
       
-   
+   @endauth
+
+   @guest
+    <div class="container">
+      <h1>Debes iniciar sesión</h1>
+   @endguest
     
 </body>
 </html>

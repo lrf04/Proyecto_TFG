@@ -41,7 +41,10 @@
                 <ul class="navbar-nav">
                   <li class="nav-item"><span></span>
                     <div class="logout">
-                        <button style="background-color:rgb(32, 30, 30)" ><i class="bi bi-box-arrow-right" href="#"></i></button>
+                        <a href="/logout">
+                          <button style="background-color:rgb(32, 30, 30)" ><i class="bi bi-box-arrow-right" href="#"></i></button>
+                        </a>  
+                        
                       </div>
                   </li> 
                 </ul>
@@ -50,7 +53,7 @@
         </div>
       </nav>
 
-
+      @auth
 
     <!--Contenido-->
     <div class="row">
@@ -141,7 +144,12 @@
       
       
       
-   
+   @endauth
+
+   @guest
+    <div class="container">
+      <h1>Debes iniciar sesión</h1>
+   @endguest
     
 </body>
 </html>

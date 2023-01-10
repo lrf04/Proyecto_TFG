@@ -33,14 +33,19 @@
                 <ul class="navbar-nav">
                   <li class="nav-item"><span></span>
                     <div class="logout">
-                        <button style="background-color:rgb(32, 30, 30)"><i class="bi bi-box-arrow-right" href="#"></i></button>
-                      </div>
+                      <a href="/logout">
+                        <button style="background-color:rgb(32, 30, 30)" ><i class="bi bi-box-arrow-right" href="#"></i></button>
+                      </a>  
+                      
+                    </div>
                   </li> 
                 </ul>
               </div>
           </div>
         </div>
       </nav>
+
+      @auth
 
       <h1>Configuración Alumno</h1>
       <div class="container mt-5">
@@ -301,7 +306,12 @@
       </div>
 
 
+      @endauth
 
+      @guest
+    <div class="container">
+      <h1>Debes iniciar sesión</h1>
+   @endguest
 
 
 

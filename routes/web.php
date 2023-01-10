@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcademicCourseController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ConfigurationController;
 
 /*
@@ -18,8 +21,19 @@ use App\Http\Controllers\ConfigurationController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect('/register');
 });
+
+/* Login, registro y logout */
+Route::get('/register',[RegisterController::class, 'show']);
+
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login',[LoginController::class, 'show']);
+
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/logout', [LogoutController::class, 'logout']);
 
 
 Route::resource('academicCourses', AcademicCourseController::class);
