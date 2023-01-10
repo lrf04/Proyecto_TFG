@@ -18,6 +18,7 @@
             
 
             <h3 class="text-center">Inicio de sesión</h3>
+            <img src="{{ asset('img/logo.jpg') }}" class="mx-auto d-block" style="width:50%">
 
             <form action="/login" method="POST">
                 @csrf
@@ -30,6 +31,9 @@
                     <label for="password">Contraseña</label>
                     
                     <input type="password" class="form-control" id="password" placeholder="Introduce contraseña" name="password">
+                </div>
+                <div class="col text-center">
+                    <a href="/register">¿No estás registrado? Regístrate</a>
                 </div>
                 <div class="col text-center">
                     <button type="submit" class="btn btn-primary" style="background-color:#8EC3B0;" value="Login">Iniciar sesión</button>

@@ -18,6 +18,7 @@
             
 
             <h3 class="text-center">Registro de usuario</h3>
+            <img src="{{ asset('img/logo.jpg') }}" class="mx-auto d-block" style="width:50%">
 
             <form action="/register" method="POST">
                 @csrf
@@ -36,6 +37,10 @@
                 <div class="mb-3">
                     <label for="password_confirmation">Confirmar contraseña *</label>
                     <input type="password" class="form-control" id="password_confirmation" placeholder="Confirma contraseña" name="password_confirmation">
+                
+                <div class="col text-center">
+                    <a href="/login">¿Ya estás registrado? Iniciar sesión</a>
+                </div>
                 <div class="col text-center">
                     <button type="submit" class="btn btn-primary" style="background-color:#8EC3B0;" value="Registrarse">Registrarse</button>
                 </div>
