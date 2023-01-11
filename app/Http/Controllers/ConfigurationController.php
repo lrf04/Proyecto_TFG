@@ -75,7 +75,8 @@ class ConfigurationController extends Controller
         $configuration->update($request->all());
         //return redirect()->route('configurations.edit', $configuration);
         $student=$configuration->student()->get();
-        return redirect()->route('students.show',$student);
+        //return $student->first(); 
+        return redirect()->route('students.show',$student->first());
     }
 
     /**
@@ -87,6 +88,9 @@ class ConfigurationController extends Controller
     public function destroy(Configuration $configuration)
     {
         $configuration->delete();
+        $student=$configuration->student()->get();
+        //return $student->first(); 
+        return redirect()->route('students.show',$student->first());
     }
 
     /* public function createWithStudent(int $studentId)

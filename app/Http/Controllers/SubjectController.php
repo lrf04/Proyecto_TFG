@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\Subject;
 use App\Models\Course;
-use App\Models\AcademicCourse;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return view("subject.index");
     }
 
     /**
@@ -24,10 +23,9 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Course $course)
-    {   
-        //return $course->all();
-        return view('Student.create',compact('course'));
+    public function create()
+    {
+        //
     }
 
     /**
@@ -38,32 +36,27 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        Student::create($request->all());
-        $courses = Course::all();
-        $academicCourses = AcademicCourse::all();
-        return view('course.index', compact('courses', 'academicCourses')); 
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Subject $subject)
     {
-        $configurations=$student->configurations()->get();
-        return view('Student.show',compact('configurations'));
-        //return view('Student.show');
+        return view("subject.show");
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Subject $subject)
     {
         //
     }
@@ -72,10 +65,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Subject $subject)
     {
         //
     }
@@ -83,13 +76,18 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Subject $subject)
     {
-        $student->delete();
-        $course=$student->course()->get();
-        return redirect()->route('courses.show',$course->first());
+        //
+    }
+
+
+    public function asignaturas(Course $course){
+        $subjects = $course->subjects()->get();
+        /* $curso=$course->get(); */
+        return view('subject.index',compact('subjects'));
     }
 }

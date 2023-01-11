@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcademicCourseController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -43,6 +44,12 @@ Route::resource('courses', CourseController::class);
 Route::resource('students', StudentController::class);
 
 Route::resource('configurations', ConfigurationController::class);
+
+Route::get('/subjects/{course}',[SubjectController::class, 'asignaturas'])->name('subjects.asignaturas');
+
+Route::resource('subjects', SubjectController::class);
+
+
 
 /* Route::get('/configurations/{studentId}/createWithStudent', [ConfigurationController::class,'createWithStudent'])->name('configurations.createWithStudent');
   */
