@@ -36,7 +36,8 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subject::create($request->all());
+        return redirect()->route('academicCourses.index');
     }
 
     /**
@@ -47,7 +48,8 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        return view("subject.show");
+        $periods=$subject->periods()->get();
+        return view('subject.show',compact('periods'));
     }
 
     /**
@@ -81,7 +83,9 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+        $course=$subject->course()->get();
+        return redirect()->route('subjects.asignaturas',$course->first());
     }
 
 
@@ -89,5 +93,11 @@ class SubjectController extends Controller
         $subjects = $course->subjects()->get();
         /* $curso=$course->get(); */
         return view('subject.index',compact('subjects'));
+    }
+
+    public function crearAsignaturas(Subject $subject){
+        $course=$subject->course()->get();
+        $course=$course->first();
+        return view('subject.create',compact('course'));
     }
 }

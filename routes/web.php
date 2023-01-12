@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ConfigurationController;
@@ -45,11 +46,15 @@ Route::resource('students', StudentController::class);
 
 Route::resource('configurations', ConfigurationController::class);
 
+
 Route::get('/subjects/{course}',[SubjectController::class, 'asignaturas'])->name('subjects.asignaturas');
+Route::get('/subject/{subject}',[SubjectController::class, 'crearAsignaturas'])->name('subjects.crearAsignaturas');
+
 
 Route::resource('subjects', SubjectController::class);
 
 
+Route::resource('periods', PeriodController::class);
 
 /* Route::get('/configurations/{studentId}/createWithStudent', [ConfigurationController::class,'createWithStudent'])->name('configurations.createWithStudent');
   */
