@@ -35,7 +35,8 @@ class PeriodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Period::create($request->all());
+        return redirect()->route('academicCourses.index');
     }
 
     /**
@@ -82,7 +83,12 @@ class PeriodController extends Controller
     {
         $period->delete();
         $subject=$period->subject()->get();
-        $periods=$subject->periods()->get();
-        return view('period.index',compact('periods'));
+        return redirect()->route('subjects.show',$subject->first());
+    }
+
+    public function crearPeriodos(Period $period){
+        $subject=$period->subject()->get();
+        $subject=$subject->first();
+        return view('period.create',compact('subject'));
     }
 }

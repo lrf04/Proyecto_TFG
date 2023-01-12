@@ -47,12 +47,15 @@ Route::resource('students', StudentController::class);
 Route::resource('configurations', ConfigurationController::class);
 
 
-Route::get('/subjects/{course}',[SubjectController::class, 'asignaturas'])->name('subjects.asignaturas');
+
+
+Route::get('/subjec/{course}',[SubjectController::class, 'asignaturas'])->name('subjects.asignaturas');
 Route::get('/subject/{subject}',[SubjectController::class, 'crearAsignaturas'])->name('subjects.crearAsignaturas');
+
+Route::get('/period/{period}',[PeriodController::class, 'crearPeriodos'])->name('periods.crearPeriodos');
 
 
 Route::resource('subjects', SubjectController::class);
-
 
 Route::resource('periods', PeriodController::class);
 

@@ -49,6 +49,7 @@ class SubjectController extends Controller
     public function show(Subject $subject)
     {
         $periods=$subject->periods()->get();
+    
         return view('subject.show',compact('periods'));
     }
 

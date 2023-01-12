@@ -59,7 +59,7 @@
 
     @auth
     
-      <div class="container2 border border-dark">namecono
+      <div class="container2 border border-dark">
         <h2>Introduce la asignatura a añadir</h2>
         <form action="{{route('subjects.store')}}"
         method="POST">

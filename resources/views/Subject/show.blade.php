@@ -61,11 +61,11 @@
 
         <!--Cursos-->
         <div class="col-sm">
-            <h1>Asignaturas</h1>
+            <h1>Periodos</h1>
             <div class="container">
-               {{--  <div class="añadirPeriodo">
-                    <a href="{{}}"><button type="button" class="btn btn-success">Añadir periodo</button></a>
-                </div> --}}
+               <div class="añadirCurso">
+                    <a href="{{route('periods.crearPeriodos',$periods->first())}}"><button type="button" class="btn btn-success">Añadir periodo</button></a>
+                </div>
 
                 {{-- Tabla cursos --}}
                 <div class="container1">       
