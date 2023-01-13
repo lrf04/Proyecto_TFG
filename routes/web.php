@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PeriodController;
+use App\Http\Controllers\DayController;
+use App\Http\Controllers\PlanificationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ConfigurationController;
@@ -58,6 +60,16 @@ Route::get('/period/{period}',[PeriodController::class, 'crearPeriodos'])->name(
 Route::resource('subjects', SubjectController::class);
 
 Route::resource('periods', PeriodController::class);
+
+
+Route::get('/planificatio/{course}',[PlanificationController::class, 'planificaciones'])->name('planifications.planificaciones');
+/* Route::get('/planificati/{course}',[PlanificationController::class, 'crearPlanification'])->name('planifications.crearPlanification');
+ */
+Route::resource('planifications', PlanificationController::class);
+
+Route::get('/day/{day}',[DayController::class, 'crearDias'])->name('days.crearDias');
+
+Route::resource('days', DayController::class);
 
 /* Route::get('/configurations/{studentId}/createWithStudent', [ConfigurationController::class,'createWithStudent'])->name('configurations.createWithStudent');
   */
