@@ -40,7 +40,7 @@ class CourseController extends Controller
     {
         Course::create($request->all());
 
-        return redirect()->route('courses.index');
+        return redirect()->route('academicCourses.index');
         
     }
 
@@ -90,5 +90,11 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+
+    public function crearCursos(Course $course){
+        $academicCourse=$course->academicCourse()->get();
+        $academicCourse=$academicCourse->first();
+        return view('course.create',compact('academicCourse'));
     }
 }

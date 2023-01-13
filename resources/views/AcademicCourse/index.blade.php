@@ -64,6 +64,7 @@
                   <th>id</th>
                   <th>Nombre</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -72,7 +73,7 @@
                     <td>{{$academicCourse->id}}</td>
                     <td>{{$academicCourse->name}}</td>
                     <td><a href="{{route('academicCourses.show',$academicCourse)}}"><button type="button" class="btn btn-success">Seleccionar</button></a></td>
-                    
+                    <td>{{auth()->user()->id}}</td>
                   </tr>
                 @endforeach
               </tbody>

@@ -67,8 +67,8 @@
             @csrf
             <div class="mb-3 mt-3">
               <input type="text" class="form-control" id="name" placeholder="Curso" name="name" value="name">
-              <input type="text" class="form-control" id="id" placeholder="Curso" name="academic_course_id" value="academic_course_id">
-              <input type="text" class="form-control" id="id" placeholder="Curso" name="user_id" value="user_id">
+              <input type="hidden" class="form-control" id="academic_course_id" placeholder="Curso" name="academic_course_id" value={{$academicCourse->id}}>
+              <input type="hidden" class="form-control" id="user_id" placeholder="Curso" name="user_id" value={{auth()->user()->id}}>
             </div>
             <button type="submit" class="btn btn-success">Añadir Curso</button>
           </form>

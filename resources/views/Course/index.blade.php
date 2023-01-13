@@ -95,7 +95,7 @@
             <h1>Cursos</h1>
             <div class="container">
                 <div class="añadirCurso">
-                    <a href="{{route('courses.create')}}"><button type="button" class="btn btn-success">Añadir curso</button></a>
+                    <a href="{{route('courses.crearCursos',$courses->first())}}"><button type="button" class="btn btn-success">Añadir curso</button></a>
                 </div>
 
                 {{-- Tabla cursos --}}
