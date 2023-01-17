@@ -19,9 +19,9 @@ class Student extends Model
         'course_id',
     ];
 
-    public function course(){
+   /*  public function course(){
         return $this->belongsTo(Course::class);
-    }
+    } */
 
     public function data(){
         return $this->hasMany(Datum::class, 'student_id', 'id');
@@ -31,5 +31,8 @@ class Student extends Model
         return $this->hasMany(Configuration::class, 'student_id', 'id');
     }
 
-    
+    public function courses(){
+        return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
+    }
+
 }

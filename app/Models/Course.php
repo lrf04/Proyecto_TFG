@@ -33,7 +33,11 @@ class Course extends Model
         return $this->hasMany(Subject::class, 'course_id', 'id');
     }
 
-    public function students(){
+    /* public function students(){
         return $this->hasMany(Student::class, 'course_id', 'id');
+    } */
+
+    public function students(){
+        return $this->belongsToMany(Student::class, 'course_student', 'course_id', 'student_id');
     }
 }
