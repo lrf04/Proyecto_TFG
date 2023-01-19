@@ -11,6 +11,10 @@
     crossorigin="anonymous"/>
 </head>
 
+<style>
+  
+</style>
+
 <body class="m-0 row justify-content-center" style="background-color:#DEF5E5;">
     <div class="col-auto p-5">
         
@@ -44,4 +48,5 @@
     </div>
     
 </body>
+
 </html>
