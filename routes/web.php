@@ -47,6 +47,11 @@ Route::get('/course/{course}',[CourseController::class, 'crearCursos'])->name('c
 
 Route::resource('courses', CourseController::class);
 
+
+Route::get('/student/{course}',[StudentController::class, 'crearAlumno'])->name('students.crearAlumno');
+Route::post('/studen/{course}',[StudentController::class, 'guardarAlumno'])->name('students.guardarAlumno');
+Route::delete('/stud/{student}/{course}',[StudentController::class, 'eliminarAlumno'])->name('students.eliminarAlumno'); 
+
 Route::resource('students', StudentController::class);
 
 Route::resource('configurations', ConfigurationController::class);

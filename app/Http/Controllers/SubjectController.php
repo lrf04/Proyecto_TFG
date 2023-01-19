@@ -93,7 +93,8 @@ class SubjectController extends Controller
     public function asignaturas(Course $course){
         $subjects = $course->subjects()->get();
         /* $curso=$course->get(); */
-        return view('subject.index',compact('subjects'));
+       return view('subject.index',compact('subjects')); 
+      
     }
 
     public function crearAsignaturas(Subject $subject){

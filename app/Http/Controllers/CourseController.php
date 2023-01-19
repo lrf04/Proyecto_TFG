@@ -52,10 +52,12 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        /* En curso estoy cogiendo todos los cursos. */
+        
         $students = $course->students()->get();
-        /* $curso=$course->get(); */
-        return view('Course.show',compact('students'/* ,'curso' */));
+        
+        
+        return view('Course.show',compact('students','course'));
+        
     }
 
     /**

@@ -16,7 +16,6 @@ class Student extends Model
         'tdah',
         'description',
         'hobbies',
-        'course_id',
     ];
 
    /*  public function course(){

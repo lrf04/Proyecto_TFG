@@ -52,7 +52,7 @@
     @auth
     
         <div class="mt-5 container">
-            <form action="{{route('students.store')}}"
+            <form action="{{route('students.guardarAlumno', $course)}}"
             method="POST">
             @csrf
                 <div class="row">
@@ -76,7 +76,7 @@
                             <label for="hobbies">Aficiones</label>
                             <input type="text" class="form-control" id="hobbies" placeholder="Aficiones" name="hobbies" value="hobbies">
 
-                            <input type="hidden" class="form-control" id="course_id" placeholder="" name="course_id" value="">
+                            {{-- <input type="hidden" class="form-control" id="course_id" placeholder="" name="course_id" value=""> --}}
                             <button type="submit" class="btn btn-success">Añadir alumno</button>
 
                     </div>

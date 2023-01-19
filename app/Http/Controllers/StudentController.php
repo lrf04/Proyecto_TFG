@@ -36,12 +36,15 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Course $course)
     {
-        Student::create($request->all());
+       /*  $newStudent = Student::create($request->all()); 
+        $newStudent->courses()->attach($course->id); */
+        //Student::create($request->all());
         $courses = Course::all();
         $academicCourses = AcademicCourse::all();
         return view('course.index', compact('courses', 'academicCourses')); 
+        
     }
 
     /**
@@ -88,8 +91,34 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        /* $student->courses()->detach($course->id);
         $student->delete();
         $course=$student->course()->get();
-        return redirect()->route('courses.show',$course->first());
+
+        return redirect()->route('courses.show',$course->first()); */
+    }
+
+    public function crearAlumno(Course $course)
+    {
+        return view('Student.create',compact('course'));
+    }
+
+    public function guardarAlumno(Request $request,Course $course)
+    {
+        $newStudent = Student::create($request->all()); 
+        $newStudent->courses()->attach($course->id);
+        $academicCourse=$course->academicCourse()->get();
+        /* $courses=$academicCourse->courses()->get();  */
+    
+        return redirect()->route('academicCourses.index');
+    }
+
+    public function eliminarAlumno(Student $student,Course $course)
+    {
+        /* $student->courses()->detach($course->id); */
+        $student->delete();
+        
+
+        return redirect()->route('courses.show',$course);
     }
 }
