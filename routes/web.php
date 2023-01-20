@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PeriodController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\DayController;
 use App\Http\Controllers\PlanificationController;
 use App\Http\Controllers\LoginController;
@@ -78,6 +79,11 @@ Route::resource('planifications', PlanificationController::class);
 Route::get('/day/{day}',[DayController::class, 'crearDias'])->name('days.crearDias');
 
 Route::resource('days', DayController::class);
+
+
+Route::get('/impor/{course}/{course1}',[ImportController::class, 'importar'])->name('imports.importar'); 
+Route::get('/import/{course1}',[ImportController::class, 'seleccionarCurso'])->name('imports.seleccionarCurso');
+Route::resource('imports', ImportController::class);
 
 /* Route::get('/configurations/{studentId}/createWithStudent', [ConfigurationController::class,'createWithStudent'])->name('configurations.createWithStudent');
   */

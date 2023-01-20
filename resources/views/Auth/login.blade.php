@@ -27,7 +27,7 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-3 mt-3">
-                    <label for="username">Username:</label>
+                    <label for="username">Nombre de usuario/Correo electrónico:</label>
                     
                     <input type="text" class="form-control" id="username" placeholder="Introduce nombre de usuario" name="username">
                 </div>

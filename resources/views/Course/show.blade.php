@@ -57,7 +57,7 @@
             <div class="col-sm">
               <div>
                 <div class="button">
-                    <a href=""><button class="btn btn-primary" style="background-color:#8EC3B0;float: left;">Importar curso</button></a>
+                    <a href="{{route('imports.seleccionarCurso',$course)}}"><button class="btn btn-primary" style="background-color:#8EC3B0;float: left;">Importar curso</button></a>
                 </div>
               </div>
             </div>
