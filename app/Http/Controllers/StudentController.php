@@ -121,4 +121,10 @@ class StudentController extends Controller
 
         return redirect()->route('courses.show',$course);
     }
+
+    public function amigos(Student $student)
+    {
+        $amigos=$student->friends()->get();
+        return view('Friend.index',compact('student','amigos'));
+    }
 }

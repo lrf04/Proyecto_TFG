@@ -34,4 +34,14 @@ class Student extends Model
         return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
     }
 
+    public function friends(){
+        return $this->belongsToMany(Student::class, 'student_friends', 'student_id', 'student_id1');
+    }
+
+    public function friends1(){
+        return $this->belongsToMany(Student::class, 'student_friends', 'student_id1', 'student_id');
+    }
+
+    
+
 }

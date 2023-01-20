@@ -8,6 +8,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\DayController;
 use App\Http\Controllers\PlanificationController;
 use App\Http\Controllers\LoginController;
@@ -49,9 +50,13 @@ Route::get('/course/{course}',[CourseController::class, 'crearCursos'])->name('c
 Route::resource('courses', CourseController::class);
 
 
+
 Route::get('/student/{course}',[StudentController::class, 'crearAlumno'])->name('students.crearAlumno');
 Route::post('/studen/{course}',[StudentController::class, 'guardarAlumno'])->name('students.guardarAlumno');
 Route::delete('/stud/{student}/{course}',[StudentController::class, 'eliminarAlumno'])->name('students.eliminarAlumno'); 
+
+Route::get('/stu/{student}',[StudentController::class, 'amigos'])->name('students.amigos');
+
 
 Route::resource('students', StudentController::class);
 
@@ -84,6 +89,10 @@ Route::resource('days', DayController::class);
 Route::get('/impor/{course}/{course1}',[ImportController::class, 'importar'])->name('imports.importar'); 
 Route::get('/import/{course1}',[ImportController::class, 'seleccionarCurso'])->name('imports.seleccionarCurso');
 Route::resource('imports', ImportController::class);
+
+Route::post('/frien/{student}',[FriendController::class, 'crearAlumnos'])->name('friends.crearAlumnos'); 
+Route::get('/friend/{student}',[FriendController::class, 'mostrarAlumnos'])->name('friends.mostrarAlumnos'); 
+Route::resource('friends', FriendController::class);
 
 /* Route::get('/configurations/{studentId}/createWithStudent', [ConfigurationController::class,'createWithStudent'])->name('configurations.createWithStudent');
   */
