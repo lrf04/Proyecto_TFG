@@ -90,6 +90,7 @@ Route::get('/impor/{course}/{course1}',[ImportController::class, 'importar'])->n
 Route::get('/import/{course1}',[ImportController::class, 'seleccionarCurso'])->name('imports.seleccionarCurso');
 Route::resource('imports', ImportController::class);
 
+Route::delete('/frie/{student}/{amigo}',[FriendController::class, 'eliminarAmigo'])->name('friends.eliminarAmigo');
 Route::post('/frien/{student}',[FriendController::class, 'crearAlumnos'])->name('friends.crearAlumnos'); 
 Route::get('/friend/{student}',[FriendController::class, 'mostrarAlumnos'])->name('friends.mostrarAlumnos'); 
 Route::resource('friends', FriendController::class);

@@ -89,11 +89,26 @@ class FriendController extends Controller
 
     public function crearAlumnos(Request $request, Student $student){
         $selectedStudents = $request->input('selected');
+        $contador=0;
         foreach($selectedStudents as $selectedStudent){
             $student->friends()->attach($selectedStudent);
+
+            $student1=Student::find($selectedStudents[$contador]);
+            $student1->friends()->attach($student->id);
+            $contador++;
+            
         }
 
         $amigos=$student->friends()->get();
-        return view('Friend.index',compact('student','amigos'));
+        return view('Friend.index',compact('student','amigos')); 
+    }
+
+    public function eliminarAmigo(Student $student,Student $amigo){
+            $student->friends()->detach($amigo->id);
+            $amigo->friends()->detach($student->id);
+        
+
+        $amigos=$student->friends()->get();
+        return view('Friend.index',compact('student','amigos')); 
     }
 }
