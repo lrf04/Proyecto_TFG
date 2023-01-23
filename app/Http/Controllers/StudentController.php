@@ -115,11 +115,12 @@ class StudentController extends Controller
 
     public function eliminarAlumno(Student $student,Course $course)
     {
-        /* $student->courses()->detach($course->id); */
-        $student->delete();
-        
+        /* Con esto lo que se hace es borrar alumno de la bbdd. Sin embargo, con la nueva relacion n:M, hay que borrarlo de la tabla pivote */
+        /* $student->delete();
+        return redirect()->route('courses.show',$course); */
+        $student->courses()->detach($course->id);
 
-        return redirect()->route('courses.show',$course);
+        return redirect()->route('courses.show',$course); 
     }
 
     public function amigos(Student $student)

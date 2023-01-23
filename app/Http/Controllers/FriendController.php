@@ -104,8 +104,8 @@ class FriendController extends Controller
     }
 
     public function eliminarAmigo(Student $student,Student $amigo){
-            $student->friends()->detach($amigo->id);
-            $amigo->friends()->detach($student->id);
+        $student->friends()->detach($amigo->id);
+        $amigo->friends()->detach($student->id);
         
 
         $amigos=$student->friends()->get();
