@@ -63,11 +63,11 @@
     <!--Contenido-->
     <div class="row">
         
-      {{-- @if (!empty($planifications))
-          <h2>No hay planificación.</h2>
+      
+          {{-- <h2>No hay planificación.</h2>
           <h3>Pulse el botón para añadir una.</h3>
           <a href="{{route('planifications.crearPlanificacion',$course)}}" class="btn btn-primary">Crear planificación.</a>
-      @else --}}
+       --}}
           <!--Cursos-->
           <div class="col-sm">
               <h1>Planificación del curso {{$planifications->first()->course()->get()->first()->name}}</h1>

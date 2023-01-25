@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\AcademicCourse;
+use App\Models\Planification;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -97,6 +98,9 @@ class CourseController extends Controller
     public function crearCursos(Course $course){
         $academicCourse=$course->academicCourse()->get();
         $academicCourse=$academicCourse->first();
+
+       /* Planification::create($course->id);   */
+
         return view('course.create',compact('academicCourse'));
     }
 }
