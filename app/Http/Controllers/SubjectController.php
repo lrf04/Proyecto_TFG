@@ -50,7 +50,7 @@ class SubjectController extends Controller
     {
         $periods=$subject->periods()->get();
     
-        return view('subject.show',compact('periods'));
+        return view('subject.show',compact('periods','subject'));
     }
 
     /**
@@ -93,13 +93,14 @@ class SubjectController extends Controller
     public function asignaturas(Course $course){
         $subjects = $course->subjects()->get();
         /* $curso=$course->get(); */
-       return view('subject.index',compact('subjects')); 
+       return view('subject.index',compact('subjects','course')); 
       
     }
 
-    public function crearAsignaturas(Subject $subject){
-        $course=$subject->course()->get();
-        $course=$course->first();
+    public function crearAsignaturas(Course $course){
+       /* $course=$subject->course()->get();
+        $course=$course->first(); */
         return view('subject.create',compact('course'));
+
     }
 }

@@ -66,9 +66,9 @@ Route::resource('configurations', ConfigurationController::class);
 
 
 Route::get('/subjec/{course}',[SubjectController::class, 'asignaturas'])->name('subjects.asignaturas');
-Route::get('/subject/{subject}',[SubjectController::class, 'crearAsignaturas'])->name('subjects.crearAsignaturas');
+Route::get('/subject/{course}',[SubjectController::class, 'crearAsignaturas'])->name('subjects.crearAsignaturas');
 
-Route::get('/period/{period}',[PeriodController::class, 'crearPeriodos'])->name('periods.crearPeriodos');
+Route::get('/period/{subject}',[PeriodController::class, 'crearPeriodos'])->name('periods.crearPeriodos');
 
 
 Route::resource('subjects', SubjectController::class);
@@ -77,11 +77,11 @@ Route::resource('periods', PeriodController::class);
 
 
 Route::get('/planificatio/{course}',[PlanificationController::class, 'planificaciones'])->name('planifications.planificaciones');
-/* Route::get('/planificati/{course}',[PlanificationController::class, 'crearPlanification'])->name('planifications.crearPlanification');
- */
+Route::get('/planificati/{course}',[PlanificationController::class, 'crearPlanificacion'])->name('planifications.crearPlanificacion');
+ 
 Route::resource('planifications', PlanificationController::class);
 
-Route::get('/day/{day}',[DayController::class, 'crearDias'])->name('days.crearDias');
+Route::get('/day/{planification}',[DayController::class, 'crearDias'])->name('days.crearDias');
 
 Route::resource('days', DayController::class);
 

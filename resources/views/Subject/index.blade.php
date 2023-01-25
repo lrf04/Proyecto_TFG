@@ -69,7 +69,8 @@
             <h1>Asignaturas</h1>
             <div class="container">
                 <div class="añadirCurso">
-                    <a href="{{route('subjects.crearAsignaturas',$subjects->first())}}"><button type="button" class="btn btn-success">Añadir asignatura</button></a>
+                  
+                    <a href="{{route('subjects.crearAsignaturas',$course)}}"><button type="button" class="btn btn-success">Añadir asignatura</button></a>
                 </div>
 
                 {{-- Tabla cursos --}}

@@ -69,7 +69,7 @@
             <h1>Periodos</h1>
             <div class="container">
                <div class="añadirCurso">
-                    <a href="{{route('days.crearDias',$days->first())}}"><button type="button" class="btn btn-success">Añadir día</button></a>
+                    <a href="{{route('days.crearDias',$planification)}}"><button type="button" class="btn btn-success">Añadir día</button></a>
                 </div>
 
                 {{-- Tabla cursos --}}

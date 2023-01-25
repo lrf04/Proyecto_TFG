@@ -64,13 +64,12 @@
     <div class="row">
         
       
-          {{-- <h2>No hay planificación.</h2>
-          <h3>Pulse el botón para añadir una.</h3>
-          <a href="{{route('planifications.crearPlanificacion',$course)}}" class="btn btn-primary">Crear planificación.</a>
-       --}}
           <!--Cursos-->
           <div class="col-sm">
-              <h1>Planificación del curso {{$planifications->first()->course()->get()->first()->name}}</h1>
+              <h1>Planificación del curso {{$course->name}}</h1>
+              <div class="añadirCurso">
+                <a href="{{route('planifications.crearPlanificacion',$course)}}" class="btn btn-success">Crear planificación.</a>
+            </div>
               <div class="container">
                           @foreach($planifications as $planification)
                           <div class="card" style="width:400px">

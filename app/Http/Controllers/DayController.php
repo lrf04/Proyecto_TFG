@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Day;
+use App\Models\Planification;
 use Illuminate\Http\Request;
 
 class DayController extends Controller
@@ -86,9 +87,9 @@ class DayController extends Controller
         return redirect()->route('planifications.show',$planification->first());
     }
     
-    public function crearDias(Day $day){
-        $planification=$day->planification()->get();
-        $planification=$planification->first();
+    public function crearDias(Planification $planification){
+        /* $planification=$day->planification()->get();
+        $planification=$planification->first(); */
         return view('day.create',compact('planification'));
     }
 }

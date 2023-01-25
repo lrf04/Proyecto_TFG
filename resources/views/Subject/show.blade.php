@@ -69,8 +69,8 @@
             <h1>Periodos</h1>
             <div class="container">
                <div class="añadirCurso">
-                    <a href="{{route('periods.crearPeriodos',$periods->first())}}"><button type="button" class="btn btn-success">Añadir periodo</button></a>
-                </div>
+                    <a href="{{route('periods.crearPeriodos',$subject)}}"><button type="button" class="btn btn-success">Añadir periodo</button></a>
+                </div> 
 
                 {{-- Tabla cursos --}}
                 <div class="container1">       

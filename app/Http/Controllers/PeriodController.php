@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Period;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class PeriodController extends Controller
@@ -86,9 +87,9 @@ class PeriodController extends Controller
         return redirect()->route('subjects.show',$subject->first());
     }
 
-    public function crearPeriodos(Period $period){
-        $subject=$period->subject()->get();
-        $subject=$subject->first();
+    public function crearPeriodos(Subject $subject){
+        /* $subject=$period->subject()->get();
+        $subject=$subject->first(); */
         return view('period.create',compact('subject'));
     }
 }

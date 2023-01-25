@@ -50,7 +50,7 @@ class PlanificationController extends Controller
     {
         $days=$planification->days()->get();
     
-        return view('planification.show',compact('days'));
+        return view('planification.show',compact('days','planification'));
     }
 
     /**
@@ -91,18 +91,12 @@ class PlanificationController extends Controller
     public function planificaciones(Course $course){
         $planifications = $course->planification()->get();
         $planification=$planifications->first();
-        if($planification!=null){
-            $course=$planification->course()->first();
-        }
-        else{
-            return view('planification.index',compact('planifications'));
 
-        }
         
         return view('planification.index',compact('planifications','course'));
     }
 
-    public function crearPlanification(Course $course){
+    public function crearPlanificacion(Course $course){
         
         return view('planification.create',compact('course'));
     }
