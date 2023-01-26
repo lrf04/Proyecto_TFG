@@ -45,7 +45,7 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 Route::resource('academicCourses', AcademicCourseController::class);
 
 
-Route::get('/course/{course}',[CourseController::class, 'crearCursos'])->name('courses.crearCursos');
+Route::get('/course/{academicCourse}',[CourseController::class, 'crearCursos'])->name('courses.crearCursos');
 
 Route::resource('courses', CourseController::class);
 

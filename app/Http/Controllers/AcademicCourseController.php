@@ -58,7 +58,7 @@ class AcademicCourseController extends Controller
 
         $academicCourses = AcademicCourse::all();
         $courses = $academicCourse->courses()->get();
-        return view('Course.index',compact('academicCourses','courses'));
+        return view('Course.index',compact('academicCourses','courses','academicCourse'));
     }
 
     /**
@@ -92,6 +92,7 @@ class AcademicCourseController extends Controller
      */
     public function destroy(AcademicCourse $academicCourse)
     {
-        //
+        $academicCourse->delete();
+        return redirect()->route('academicCourses.index');
     }
 }

@@ -85,7 +85,7 @@ class PlanificationController extends Controller
     public function destroy(Planification $planification)
     {
         $planification->delete();
-        return view('academicCourse.index');
+        return redirect()->route('academicCourses.index');
     }
 
     public function planificaciones(Course $course){

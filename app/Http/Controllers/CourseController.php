@@ -92,12 +92,13 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->route('academicCourses.index');
     }
 
-    public function crearCursos(Course $course){
-        $academicCourse=$course->academicCourse()->get();
-        $academicCourse=$academicCourse->first();
+    public function crearCursos(AcademicCourse $academicCourse){
+        /* $academicCourse=$course->academicCourse()->get();
+        $academicCourse=$academicCourse->first(); */
 
        /* Planification::create($course->id);   */
 

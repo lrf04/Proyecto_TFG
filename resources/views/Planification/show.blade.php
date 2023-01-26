@@ -66,7 +66,7 @@
 
         <!--Cursos-->
         <div class="col-sm">
-            <h1>Periodos</h1>
+            <h1>Dias</h1>
             <div class="container">
                <div class="añadirCurso">
                     <a href="{{route('days.crearDias',$planification)}}"><button type="button" class="btn btn-success">Añadir día</button></a>
@@ -118,7 +118,7 @@
 
    @guest
     <div class="container">
-      <h1>Debes iniciar sesión</h1>
+      <h1>Debes <a href="/login">iniciar sesión</a></h1>
    @endguest
     
 </body>

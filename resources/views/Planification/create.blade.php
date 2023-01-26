@@ -65,7 +65,7 @@
             <div class="mb-3 mt-3">
               <input type="hidden" class="form-control" id="course_id"  name="course_id" value={{$course->id}}>
             </div>
-            <button type="submit" class="btn btn-success">Crear plaificación</button>
+            <button type="submit" class="btn btn-success">Crear planificación</button>
           </form>
       </div>
 
@@ -73,7 +73,7 @@
       
     @guest
     <div class="container">
-      <h1>Debes iniciar sesión</h1>
+      <h1>Debes <a href="/login">iniciar sesión</a></h1>
    @endguest
       
    

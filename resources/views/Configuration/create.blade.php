@@ -308,7 +308,7 @@
 
       @guest
     <div class="container">
-      <h1>Debes iniciar sesión</h1>
+      <h1>Debes <a href="/login">iniciar sesión</a></h1>
    @endguest
 
 
