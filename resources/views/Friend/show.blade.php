@@ -19,6 +19,21 @@
         .añadirAmigo{
             margin-left: 500px;
         }
+        footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
     </style>
 </head>
 
@@ -78,7 +93,7 @@
               @endforeach            
           </tbody>
         </table>
-        <button type="submit">Aceptar</button>
+        <button type="submit" data-toggle="tooltip" title="Añadir amigo">Aceptar</button>
       </form>
 
 
@@ -96,4 +111,9 @@
    @endguest
     
 </body>
+<footer>
+  <p>Autor: Luis Ruiz Flores<br>
+  <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+</footer>
+
 </html>

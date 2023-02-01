@@ -56,7 +56,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         $configurations=$student->configurations()->get();
-        return view('Student.show',compact('configurations'));
+        return view('Student.show',compact('configurations','student'));
         //return view('Student.show');
     }
 

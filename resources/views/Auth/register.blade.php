@@ -10,9 +10,22 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
     crossorigin="anonymous"/>
 </head>
+<style>
+    footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        
+</style>
 
 
-<body class="m-0 row justify-content-center background-color=green" style="background-color:#DEF5E5;">
+<body class="m-0 row justify-content-center" style="background-color:#DEF5E5;">
     <div class="col-auto p-5">
         
             <h2 class="text-center">Bienvenido a tu app</h2>
@@ -52,6 +65,5 @@
     </div>
     
 </body>
-
 
 </html>

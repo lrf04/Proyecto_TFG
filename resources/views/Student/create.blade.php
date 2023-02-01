@@ -13,6 +13,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<style>
+  footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+</style>
+
 <body style="background-color:#DEF5E5;">
     <!--Barra de navegación-->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -45,6 +63,14 @@
 
 
     @auth
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"> <a href="{{route('academicCourses.index')}}">Cursos académicos</a></li>
+        <li class="breadcrumb-item"> <a href="{{route('academicCourses.show',$course->academicCourse)}}">Cursos</a></li>
+        <li class="breadcrumb-item"> <a href="{{route('courses.show',$course)}}">Alumnos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Crear alumno</li>
+      </ol>
+    </nav>
     
         <div class="mt-5 container">
             <form action="{{route('students.guardarAlumno', $course)}}"
@@ -99,4 +125,8 @@
       <h1>Debes <a href="/login">iniciar sesión</a></h1>
    @endguest
 </body>
+<footer>
+  <p>Autor: Luis Ruiz Flores<br>
+  <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+</footer>
 </html>

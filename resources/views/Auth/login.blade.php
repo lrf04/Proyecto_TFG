@@ -12,7 +12,17 @@
 </head>
 
 <style>
-  
+  footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        
 </style>
 
 <body class="m-0 row justify-content-center" style="background-color:#DEF5E5;">
@@ -48,5 +58,9 @@
     </div>
     
 </body>
+<footer>
+    <p>Autor: Luis Ruiz Flores<br>
+    <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+  </footer>
 
 </html>

@@ -60,6 +60,8 @@ Route::get('/stu/{student}',[StudentController::class, 'amigos'])->name('student
 
 Route::resource('students', StudentController::class);
 
+
+Route::get('/configuratio/{student}',[ConfigurationController::class, 'crearConfiguracion'])->name('configurations.crearConfiguracion');
 Route::resource('configurations', ConfigurationController::class);
 
 

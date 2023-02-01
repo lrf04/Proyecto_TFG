@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Configuration;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ConfigurationController extends Controller
@@ -37,7 +38,8 @@ class ConfigurationController extends Controller
     {
         //return $request->all();
         Configuration::create($request->all());
-        return redirect()->route('configurations.create');
+        $student=Student::find($request->student_id);
+        return redirect()->route('students.show',$student);
     }
 
     /**
@@ -97,4 +99,10 @@ class ConfigurationController extends Controller
     {
         return view('configuration.create',compact('studentId'));
     } */
+
+    public function crearConfiguracion(Student $student){
+
+        return view('configuration.create',compact('student'));
+
+    }
 }

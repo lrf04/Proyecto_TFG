@@ -11,6 +11,7 @@
     crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         td{
@@ -24,6 +25,21 @@
         }
         .añadirCurso{
             margin-left: 500px;
+        }
+        footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
     </style>
 </head>
@@ -69,7 +85,7 @@
             <h1>Periodos</h1>
             <div class="container">
                <div class="añadirCurso">
-                    <a href="{{route('periods.crearPeriodos',$subject)}}"><button type="button" class="btn btn-success">Añadir periodo</button></a>
+                    <a href="{{route('periods.crearPeriodos',$subject)}}" data-toggle="tooltip" title="Crear un nuevo periodo"><button type="button" class="btn btn-success">Añadir periodo</button></a>
                 </div> 
 
                 {{-- Tabla cursos --}}
@@ -77,7 +93,6 @@
                     <table class="table table-hover">
                     <thead>
                         <tr>
-                        <th>id</th>
                         <th>Hora</th>
                         <th></th>
                         </tr>
@@ -85,18 +100,51 @@
                     <tbody>
                         @foreach($periods as $period)
                         <tr>
-                            <td>{{$period->id}}</td>
+                            
                             <td>{{$period->time}}</td>
-                            <td><form method="POST" action="{{route('periods.destroy',$period)}}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                    Eliminar
-                                </button>
-                              </form>
+                            <td>
+                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal{{$period->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                </svg> 
+                                Eliminar
+                              </button> 
+        
+        
+                                <div class="modal" id="myModal{{$period->id}}">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+        
+                                      <!-- Modal Header -->
+                                      <div class="modal-header">
+                                        <h4 class="modal-title">¿Desea eliminar?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                      </div>
+        
+                                      <!-- Modal body -->
+                                      <div class="modal-body">
+                                        Si pulsa el siguiente botón, se eliminará el periodo. Si cierra esta ventana, no se eliminará.
+                                      </div>
+        
+                                      <!-- Modal footer -->
+                                      <div class="modal-footer">
+                                        <form method="POST" action="{{route('periods.destroy',$period)}}" data-toggle="tooltip" title="Eliminar este periodo">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                              </svg>
+                                              Eliminar
+                                          </button>
+                                        </form>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+                                </div> 
+
+
+                              
                             </td>
                             
                         </tr>
@@ -122,4 +170,8 @@
    @endguest
     
 </body>
+<footer>
+  <p>Autor: Luis Ruiz Flores<br>
+  <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+</footer>
 </html>

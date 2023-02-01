@@ -11,10 +11,26 @@
     crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         table{
             margin-top: 40px;
+        }
+        footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
     </style>
 </head>
@@ -51,13 +67,21 @@
 
       @auth
 
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"> <a href="{{route('academicCourses.index')}}">Cursos académicos</a></li>
+          <li class="breadcrumb-item"> <a href="{{route('academicCourses.show',$course->academicCourse)}}">Cursos</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Alumnos</li>
+        </ol>
+      </nav>
+
 
       <div class="container mt-5">
         <div class="row">
             <div class="col-sm">
               <div>
                 <div class="button">
-                    <a href="{{route('imports.seleccionarCurso',$course)}}"><button class="btn btn-success" style="float: left;">Importar curso</button></a>
+                    <a href="{{route('imports.seleccionarCurso',$course)}}" data-toggle="tooltip" title="importar un curso existente"><button class="btn btn-success" style="float: left;">Importar curso</button></a>
                 </div>
               </div>
             </div>
@@ -67,7 +91,7 @@
               {{-- Hay que añadir el curso a la ruta --}}
                 <div>
                     <div class="button">
-                      <a href="{{route('students.crearAlumno',$course)}}"><button type="button" class="btn btn-success">Añadir alumno</button></a>
+                      <a href="{{route('students.crearAlumno',$course)}}" data-toggle="tooltip" title="Crear alumno"><button type="button" class="btn btn-success">Añadir alumno</button></a>
                     </div>
                 </div>
             </div>
@@ -79,9 +103,9 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Edad</th>
-                <th>Descripcion</th>
-                <th>TDAH</th>
                 <th>Opciones</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -90,40 +114,65 @@
                         <td>{{$student->name}}</td>
                         <td>{{$student->surname}}</td>
                         <td>{{$student->age}}</td>
-                        <td>{{$student->description}}</td>
-                        <td>{{$student->tdah}}</td>
-                        <td><a href="{{route('students.show',$student)}}" class="btn btn-primary" type="button">
+                        <td><a href="{{route('students.show',$student)}}" data-toggle="tooltip" title="Acceder a las configuraciones del alumno" class="btn btn-primary" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
                                 <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path>
                                 </svg>
                                 Configuraciones
                             </a>
-                          </br>
-                            <a href="{{route('students.amigos',$student)}}" class="btn btn-info" type="button">
+                          </td>
+                          <td>
+                            <a href="{{route('students.amigos',$student)}}" data-toggle="tooltip" title="Acceder a los amigos del alumno" class="btn btn-info" type="button">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
                               </svg>
                               Amigos
                           </a>
-                            <form method="POST" action="{{route('students.eliminarAlumno',[$student,$course])}}">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                  </svg>
-                                  Eliminar
-                              </button>
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal{{$student->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg> 
+                            Eliminar
+                          </button> 
+    
+    
+                            <div class="modal" id="myModal{{$student->id}}">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+    
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">¿Desea eliminar?</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                  </div>
+    
+                                  <!-- Modal body -->
+                                  <div class="modal-body">
+                                    Si pulsa el siguiente botón, se eliminará el alumno. Si cierra esta ventana, no se eliminará.
+                                  </div>
+    
+                                  <!-- Modal footer -->
+                                  <div class="modal-footer">
+                                    <form method="POST" action="{{route('students.eliminarAlumno',[$student,$course])}}" data-toggle="tooltip" title="Eliminar este alumno">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button class="btn btn-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                          </svg>
+                                          Eliminar
+                                      </button>
+        
+                                    </form>
+                                  </div>
+    
+                                </div>
+                              </div>
+                            </div> 
 
-                            </form>
                             
-
-                            {{-- <button class="btn btn-success" type="submit" onClick="deleteStudent()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                                Eliminar
-                            </button> --}}
+                            
                         </td>
                     </tr>
                 @endforeach
@@ -157,4 +206,8 @@
    @endguest
     
 </body>
+<footer>
+  <p>Autor: Luis Ruiz Flores<br>
+  <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+</footer>
 </html>

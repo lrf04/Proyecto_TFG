@@ -12,6 +12,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+  footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+</style>
 
 <body style="background-color:#DEF5E5;">
     <!--Barra de navegación-->
@@ -52,7 +69,7 @@
             <!--Umbrales-->
             <div class="umbrales">
               <h3>Umbrales</h3>
-              <form action="{{route('configurations.update',$configuration)}}"
+              <form action="{{route('configurations.update',$configuration)}}" 
                 method="POST">
 
                 @method('PUT')
@@ -225,7 +242,7 @@
 
           <div class="col-sm-6">
             <div class="boton">
-              <button type="submit" class="btn btn-success">
+              <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Confirmar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
                 <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"></path>
                 </svg>
@@ -314,4 +331,5 @@
 
 
 </body>
+
 </html>

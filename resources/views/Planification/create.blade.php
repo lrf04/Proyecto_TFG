@@ -22,6 +22,21 @@
         .añadirAño{
             margin-left: 500px;
         }
+        footer {
+            
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            color: white;
+            text-align: center;
+            background-color: rgb(51,51,51);
+            margin-top: auto;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
     </style>
 </head>
 
@@ -59,7 +74,7 @@
     
       <div class="container2 border border-dark">
         <h2>Pulsa el botón para confirmar la creación de la planificación.</h2>
-        <form action="{{route('planifications.store')}}"
+        <form action="{{route('planifications.store')}}" data-toggle="tooltip" title="Confirmar la creación de la planificación."
         method="POST">
             @csrf
             <div class="mb-3 mt-3">
@@ -79,4 +94,8 @@
    
     
 </body>
+<footer>
+  <p>Autor: Luis Ruiz Flores<br>
+  <a href="mailto:luis.ruiz2@alu.uclm.es">luis.ruiz2@alu.uclm.es</a></p>
+</footer>
 </html>
