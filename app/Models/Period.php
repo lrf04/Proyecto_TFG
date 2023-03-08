@@ -10,8 +10,9 @@ class Period extends Model
     use HasFactory;
 
     protected $fillable = [
+        'day',
         'time',
-        'day_id',
+        'timeFinish',
         'subject_id',
     ];
 

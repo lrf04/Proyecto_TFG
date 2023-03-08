@@ -78,8 +78,9 @@
         method="POST">
             @csrf
             <div class="mb-3 mt-3">
-              <input type="time" class="form-control" id="time" placeholder="Periodo" name="time" value="time">
-              <input type="text" class="form-control" id="day_id" placeholder="Name" name="day_id" value="day_id">
+              <input type="text" class="form-control" id="day" placeholder="Día" name="day" value="day">
+              <input type="time" class="form-control" id="time" placeholder="Hora inicio" name="time" value="time">
+              <input type="time" class="form-control" id="timeFinish" placeholder="Hora final" name="timeFinish" value="timeFinish">
               <input type="hidden" class="form-control" id="subject_id"  name="subject_id" value={{$subject->id}}>
             </div>
             <button type="submit" class="btn btn-success">Añadir periodo</button>
