@@ -27,7 +27,7 @@ use App\Http\Controllers\ConfigurationController;
 */
 
 Route::get('/', function () {
-  return redirect('/register');
+  return redirect('/login');
 });
 
 /* Login, registro y logout */

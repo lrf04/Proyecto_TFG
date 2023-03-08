@@ -56,6 +56,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         $configurations=$student->configurations()->get();
+       
         return view('Student.show',compact('configurations','student'));
         //return view('Student.show');
     }
@@ -127,5 +128,11 @@ class StudentController extends Controller
     {
         $amigos=$student->friends()->get();
         return view('Friend.index',compact('student','amigos'));
+    }
+
+    public function showStudentJson(Int $id)
+    {
+        $student = Student::find($id);
+        return response()->json($student);
     }
 }

@@ -14,12 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('periods', function (Blueprint $table) {
-            $table->dropForeign(['day_id']);
-            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade')->change();
-            
-            $table->dropForeign(['subject_id']);
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->change();
-
+            $table->dropForeign(['day_name']);
+            $table->dropColumn('day_name');
+            $table->dropColumn('day_id');
+        
         });
     }
 
@@ -31,8 +29,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('periods', function (Blueprint $table) {
-            $table->removeColumn('day_id');
-            $table->removeColumn('subject_id');
+            $table->string('day_name');
+            $table->integer('day_id');
         });
     }
 };

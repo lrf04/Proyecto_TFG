@@ -79,7 +79,7 @@
             @csrf
             <div class="mb-3 mt-3">
               <input type="time" class="form-control" id="time" placeholder="Periodo" name="time" value="time">
-              <input type="text" class="form-control" id="day_id" placeholder="Dia" name="day_id" value="day_id">
+              <input type="text" class="form-control" id="day_id" placeholder="Name" name="day_id" value="day_id">
               <input type="hidden" class="form-control" id="subject_id"  name="subject_id" value={{$subject->id}}>
             </div>
             <button type="submit" class="btn btn-success">Añadir periodo</button>

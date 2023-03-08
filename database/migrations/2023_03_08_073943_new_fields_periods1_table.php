@@ -14,12 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('periods', function (Blueprint $table) {
-            $table->dropForeign(['day_id']);
-            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade')->change();
-            
-            $table->dropForeign(['subject_id']);
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->change();
-
+            $table->foreign('day_name')->references('name')->on('days')->onDelete('cascade')->change();
         });
     }
 
@@ -31,8 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('periods', function (Blueprint $table) {
-            $table->removeColumn('day_id');
-            $table->removeColumn('subject_id');
+            $table->removeColumn('day_name');
         });
     }
 };

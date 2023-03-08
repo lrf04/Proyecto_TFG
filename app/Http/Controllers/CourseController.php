@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\AcademicCourse;
+use App\Models\Student;
 use App\Models\Planification;
 use Illuminate\Http\Request;
 
@@ -51,13 +52,32 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+   /*  public function show(Request $request,Course $course)
     {
-        
         $students = $course->students()->get();
-        
-        
+       //if($request->ajax()){ 
+        if ($request->accepts('application/json')) {
+            return response()->json($students, 200);
+        }else{
+            return view('Course.show',compact('students','course'));
+        }
+    }  */
+    
+    public function show(Request $request, Course $course)
+    {
+        $students = $course->students()->get();
+
+        // if ($request->expectsJson()) {
+       //     return response()->json($students->toArray());
+        //} 
         return view('Course.show',compact('students','course'));
+        
+    }
+
+    public function showJson(Request $request, Course $course)
+    {
+        $students = $course->students()->get();
+        return response()->json($students, 200);
         
     }
 
@@ -103,5 +123,30 @@ class CourseController extends Controller
        /* Planification::create($course->id);   */
 
         return view('course.create',compact('academicCourse'));
+    }
+
+
+    public function getSubjectsPeriodsJson(int $id){
+        $student = Student::find($id);
+        $courses=$student->courses()->latest()->first();
+        $subjects = $courses->subjects()->get();
+
+        
+        $subjects=$courses->subjects()->get();
+        $courses->subjects=$subjects;
+
+
+        foreach($subjects as $subject)
+        {
+            $periods = $subject->periods()->get();
+            $subject->periods = $periods;
+        }
+
+        $data = [
+            'course' => $courses/* ,
+            'subjects' => $subjects   */ 
+        ];
+        return response()->json($data, 200);
+
     }
 }
