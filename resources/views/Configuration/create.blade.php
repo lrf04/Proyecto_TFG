@@ -297,6 +297,24 @@
                     <input type="hidden" name="student_id" value="{{$student->id}}">
                 </div>
                 </div>
+
+                <div class="row">
+                  <div class="col">
+                    Activar configuracion:
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" id="radio1" name="activar" value="activada">Sí
+                      <label class="form-check-label" for="radio1"></label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" id="radio2" name="activar" value="desactivada" checked>No
+                      <label class="form-check-label" for="radio2"></label>
+                    </div>
+                  </div>
+
+                  
+                </div>
+
+                
               </form>
             </div>
 

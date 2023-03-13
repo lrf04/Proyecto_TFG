@@ -31,6 +31,7 @@ class Configuration extends Model
         'lower_proximity_lower_rate',
         'higher_proximity_lower_time',
         'student_id',
+        'activar',
     ];
 
     public function student(){

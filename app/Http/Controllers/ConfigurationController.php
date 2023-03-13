@@ -40,6 +40,7 @@ class ConfigurationController extends Controller
         Configuration::create($request->all());
         $student=Student::find($request->student_id);
         return redirect()->route('students.show',$student);
+        
     }
 
     /**
@@ -104,5 +105,13 @@ class ConfigurationController extends Controller
 
         return view('configuration.create',compact('student'));
 
+    }
+
+    public function getConfigurationJson(int $id){
+        $student=Student::find($id);
+        $configurations=$student->configurations()->get();
+        $configuration=$configurations->where('activar','activada')->first();
+
+        return $configuration;
     }
 }

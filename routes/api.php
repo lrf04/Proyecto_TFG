@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ConfigurationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::get('courses/{course}', [CourseController::class, 'showJson'])->name('cou
 Route::get("students/{id}",[StudentController::class, 'showStudentJson'])->name('students.showStudentJson');
 
 Route::get("subjects/{id}",[CourseController::class,'getSubjectsPeriodsJson'])->name('course.getSubjectsPeriodsJson');
+
+Route::get("configurations/{id}",[ConfigurationController::class, 'getConfigurationJson'])->name('configurations.getConfigurationJson');

@@ -128,25 +128,25 @@ class CourseController extends Controller
 
     public function getSubjectsPeriodsJson(int $id){
         $student = Student::find($id);
-        $courses=$student->courses()->latest()->first();
-        $subjects = $courses->subjects()->get();
+        $course=$student->courses()->latest()->first();
+        $subjects = $course->subjects()->get();
 
         
-        $subjects=$courses->subjects()->get();
-        $courses->subjects=$subjects;
+        $subjects=$course->subjects()->get();
+        $course->subjects=$subjects;
 
 
         foreach($subjects as $subject)
         {
             $periods = $subject->periods()->get();
             $subject->periods = $periods;
-        }
+        } 
 
         $data = [
-            'course' => $courses/* ,
+            'subjects' => $subjects/* ,
             'subjects' => $subjects   */ 
         ];
-        return response()->json($data, 200);
+        return response()->json($subjects, 200);
 
     }
 }

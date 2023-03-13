@@ -297,6 +297,22 @@
                     <input type="text" class="form-control" placeholder="Introduce tu respuesta" name="no_movement" id="no_movement" value="{{old('no_movement',$configuration->no_movement)}}">
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col">
+                    Activar configuracion:
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" id="radio1" name="activar" value="activada">Sí
+                      <label class="form-check-label" for="radio1"></label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" id="radio2" name="activar" value="desactivada" checked>No
+                      <label class="form-check-label" for="radio2"></label>
+                    </div>
+                  </div>
+
+                  
+                </div>
               </form>
             </div>
 
