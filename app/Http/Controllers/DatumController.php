@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Datum;
+use App\Models\Period;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class DatumController extends Controller
 {
@@ -89,8 +91,30 @@ class DatumController extends Controller
         $id=Student::find($student->id);
 
         return view('Datum.index',compact('student'));
+    }
+
+    public function showDatosClase(Student $student,Request $request)
+    {
+        
+        $date=$request->date;
+        
+        $dato=$student->data->where('fecha',$date)->first();
+        $datoBueno=Datum::find($dato->id);
+        $datosClase=$datoBueno->datumClasses;
+        $periodos=array();
+        $asignaturas=array();
+        foreach($datosClase as $datoClase){
+            $id=$datoClase->periodo_id;
+            $periodo=Period::find($id);
+            $subject=$periodo->subject;
+            array_push($periodos,Period::find($id));
+            array_push($asignaturas,$subject);
+        }
 
 
-
+       
+        //return $asignaturas;
+        return view('Datum.show',compact('student','datoBueno','datosClase','periodos','asignaturas'));
+        
     }
 }

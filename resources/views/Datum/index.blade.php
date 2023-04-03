@@ -66,6 +66,20 @@
     </nav>
 
       @auth
+
+      <div class="container2 border border-dark">
+        <h2>Selecciona la fecha</h2>
+        <form action="{{route('datum.showDatosClase',$student)}}"
+        method="POST">
+            @csrf
+            <div class="mb-3 mt-3">
+              <input type="date" class="form-control" id="date" placeholder="Fecha" name="date" value="date">
+              
+            </div>
+            <button type="submit" class="btn btn-success">Elegir fecha</button>
+          </form>
+
+      </div>
       
 
     

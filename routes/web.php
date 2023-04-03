@@ -66,6 +66,7 @@ Route::get('/configuratio/{student}',[ConfigurationController::class, 'crearConf
 Route::resource('configurations', ConfigurationController::class);
 
 Route::get('/datu/{student}',[DatumController::class, 'datos'])->name('datum.datos');
+Route::post('/dat/{student}',[DatumController::class, 'showDatosClase'])->name('datum.showDatosClase');
 Route::resource('datum', DatumController::class);
 
 
