@@ -32,7 +32,7 @@
             
 
             <h3 class="text-center">Inicio de sesión</h3>
-            <img src="{{ asset('img/logo.jpg') }}" class="mx-auto d-block" style="width:50%">
+            <img src="{{ asset('img/cabeza_robot.png') }}" class="mx-auto d-block" style="width:50%">
 
             <form action="/login" method="POST">
                 @csrf

@@ -14,6 +14,7 @@ use App\Http\Controllers\PlanificationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\DatumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,9 @@ Route::resource('students', StudentController::class);
 
 Route::get('/configuratio/{student}',[ConfigurationController::class, 'crearConfiguracion'])->name('configurations.crearConfiguracion');
 Route::resource('configurations', ConfigurationController::class);
+
+Route::get('/datu/{student}',[DatumController::class, 'datos'])->name('datum.datos');
+Route::resource('datum', DatumController::class);
 
 
 

@@ -28,3 +28,10 @@ Route::get("students/{id}",[StudentController::class, 'showStudentJson'])->name(
 Route::get("subjects/{id}",[CourseController::class,'getSubjectsPeriodsJson'])->name('course.getSubjectsPeriodsJson');
 
 Route::get("configurations/{id}",[ConfigurationController::class, 'getConfigurationJson'])->name('configurations.getConfigurationJson');
+
+Route::post("data/configuration",[ConfigurationController::class,'postData'])->name('configurations.postData');
+
+//Route::get("data/configuration",[ConfigurationController::class,'postData'])->name('configurations.postData');
+
+
+//Route::get("data/configuration",[ConfigurationController::class,'showData'])->name('configurations.showData');

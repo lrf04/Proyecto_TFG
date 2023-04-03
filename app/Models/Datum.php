@@ -10,14 +10,14 @@ class Datum extends Model
     use HasFactory;
 
     protected $fillable = [
-        'period_id',
-        'student_id',
         'configuration_id',
+        'student_id',
+        'fecha',
+        'puntuacion'
     ];
+    protected $table = 'Datum';
 
-    public function period(){
-        return $this->belongsTo(Period::class);
-    }
+    
 
     public function student(){
         return $this->belongsTo(Student::class);
@@ -25,5 +25,9 @@ class Datum extends Model
 
     public function configuration(){
         return $this->belongsTo(Configuration::class);
+    }
+
+    public function datumClasses(){
+        return $this->hasMany(DatumClass::class, 'datum_id', 'id');
     }
 }
