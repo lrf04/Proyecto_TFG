@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Datum;
 use App\Models\Period;
 use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
@@ -111,10 +112,13 @@ class DatumController extends Controller
             array_push($asignaturas,$subject);
         }
 
-
+        $datoRecreo=$datoBueno->datumRecreo;
+        $totalRecreo=$datoRecreo->total_movimiento+$datoRecreo->total_no_movimiento;
+        $periodoRecreo=Period::find($datoRecreo->periodo_id);
+        $periodoRecreo1=Subject::find($periodoRecreo->subject_id);
        
         //return $asignaturas;
-        return view('Datum.show',compact('student','datoBueno','datosClase','periodos','asignaturas'));
+        return view('Datum.show',compact('student','datoBueno','datosClase','periodos','asignaturas','datoRecreo','periodoRecreo','periodoRecreo1','totalRecreo'));
         
     }
 }

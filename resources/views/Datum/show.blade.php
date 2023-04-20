@@ -144,6 +144,34 @@
             </tbody>
           </table>
 
+          <h3>Información del recreo</h3>
+          <table class="table">
+            <thead style="background-color:#9ED5C5">
+              <tr>
+                <th>Nombre</th>
+                <th>Hora inicio</th>
+                <th>Hora final</th>
+                <th>Porcentaje movimiento</th>
+                <th>Porcentaje quieto</th>
+                <th>Pasos</th>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th>{{$periodoRecreo1->name}}</th>
+                  <th>{{$periodoRecreo->time}}</th>
+                  <th>{{$periodoRecreo->timeFinish}}</th>
+                  <th>{{($datoRecreo->total_movimiento/$totalRecreo)*100}}</th>
+                  <th>{{($datoRecreo->total_no_movimiento/$totalRecreo)*100}}</th>
+                  <th>{{$datoRecreo->steps}}</th>
+                </tr>
+            </tbody>
+          </table>
+
+
+
 
 
 

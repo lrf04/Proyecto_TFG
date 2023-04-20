@@ -30,4 +30,9 @@ class Datum extends Model
     public function datumClasses(){
         return $this->hasMany(DatumClass::class, 'datum_id', 'id');
     }
+
+    public function datumRecreo(){
+        return $this->hasOne(DatumRecreo::class, 'datum_id', 'id');
+    }
+
 }

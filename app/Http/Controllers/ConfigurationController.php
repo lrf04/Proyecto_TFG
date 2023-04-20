@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Configuration;
 use App\Models\Datum;
 use App\Models\DatumClass;
+use App\Models\DatumRecreo;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -128,6 +129,7 @@ class ConfigurationController extends Controller
         $datos1Array = json_decode($datos1, true);
 
         $datosClase=$datos1Array['datos_clase'];
+        $datosRecreo=$datos1Array['datos_recreo'];
 
         $fecha = date('Y-m-d',strtotime($datos1Array['fecha']));
         
@@ -151,6 +153,14 @@ class ConfigurationController extends Controller
                 'total_calmado_ritmo' => $dato['total_calmado_ritmo'],
             ]);
         }
+
+        DatumRecreo::create([
+            'datum_id'=>$dato1->id,
+            'periodo_id' => $datosRecreo['periodo_id'],
+            'steps' => $datosRecreo['steps'],
+            'total_movimiento' => $datosRecreo['total_movimiento'],
+            'total_no_movimiento' => $datosRecreo['total_no_movimiento'],
+        ]);
 
         return $request->all();
         //return redirect()->route('configurations.showData',$datos);
