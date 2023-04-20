@@ -12,10 +12,6 @@ class Configuration extends Model
     protected $fillable = [
         'lower_heart_rate',
         'higher_heart_rate',
-        'movement_monitoring_time',
-        'movement_percentage',
-        'no_movement_monitoring_time',
-        'no_movement_percentage',
         'higher_rate',
         'lower_rate',
         'lower_movement',
@@ -25,11 +21,7 @@ class Configuration extends Model
         'higher_rate_lower_movement',
         'lower_rate_higher_movement',
         'no_movement',
-        'proximity',
-        'time',
         'lower_proximity_higher_rate',
-        'lower_proximity_lower_rate',
-        'higher_proximity_lower_time',
         'student_id',
         'activar',
     ];

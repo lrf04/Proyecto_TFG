@@ -88,7 +88,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col">
                     Movimiento:
                   </div>
@@ -114,7 +114,7 @@
                     <label for="no_movement_percentage">Porcentaje diferencia:</label>
                     <input type="text" class="form-control" placeholder="%" name="no_movement_percentage" id="no_movement_percentage" value="{{old('no_movement_percentage')}}">
                   </div>
-                </div>
+                </div> --}}
               
 
               
@@ -171,7 +171,7 @@
             <div class="patio">
               <h3>Patio</h3>
               
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col">
                     Proximidad y tiempo:
                   </div>
@@ -182,18 +182,18 @@
                   <div class="col">
                     <input type="text" class="form-control" placeholder="segundos" name="time" id="time" value="{{old('time')}}">
                   </div>
-                </div>
+                </div> --}}
 
                 <div class="row">
                   <div class="col">
-                    Proximidad baja y ritmo alto:
+                    No interacción:
                   </div>
                   <div class="col">
                     <input type="text" class="form-control" placeholder="Introduce tu respuesta" name="lower_proximity_higher_rate" id="lower_proximity_higher_rate" value="{{old('lower_proximity_higher_rate')}}">
                   </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col">
                     Proximidad baja y ritmo bajo:
                   </div>
@@ -210,7 +210,7 @@
                   <div class="col">
                     <input type="text" class="form-control" placeholder="Introduce tu respuesta" name="higher_proximity_lower_time" id="higher_proximity_lower_time" value="{{old('higher_proximity_lower_time')}}">
                   </div>
-                </div>
+                </div> --}}
 
                 
 

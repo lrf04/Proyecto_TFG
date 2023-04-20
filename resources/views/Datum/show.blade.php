@@ -114,6 +114,8 @@
                 <th>Hora final</th>
                 <th>Porcentaje tranquilo movimiento</th>
                 <th>Porcentaje tranquilo ritmo</th>
+                <th>Valoracion</th>
+                
                 
               </tr>
             </thead>
@@ -125,6 +127,17 @@
                     <th>{{$periodos[$loop->index]['timeFinish']}}</th>
                     <th>{{($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100}}</th>
                     <th>{{($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100}}</th>
+                    {{-- <th>
+                      @if ((($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100)>80 && (($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100)<80 )
+                        <img src="{{ asset('img/logo.png') }}">
+                      @elseif ((($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100)<30 && (($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100)<30 )
+                        <img src="{{ asset('img/configuracion.png') }}">
+                      @else
+                        <img src="{{ asset('img/avatar.png') }}">
+                      @endif
+
+                    </th> --}}
+                    
                 </tr>
                 @endforeach
                 
