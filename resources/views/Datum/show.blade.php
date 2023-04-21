@@ -36,6 +36,9 @@
             display: flex;
             justify-content: center;
         }
+        .size{
+            width: 330px;
+        }
     </style>
 </head>
 
@@ -114,29 +117,47 @@
                 <th>Hora final</th>
                 <th>Porcentaje tranquilo movimiento</th>
                 <th>Porcentaje tranquilo ritmo</th>
-                <th>Valoracion</th>
+                <th>Valoración</th>
                 
                 
               </tr>
             </thead>
             <tbody>
                 @foreach($datosClase as $datoClase)
+                  @php
+                      $movimiento=($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100;
+                      $ritmo=($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100;
+                  @endphp
+
                 <tr>
                     <th>{{$asignaturas[$loop->index]['name']}}</th>
                     <th>{{$periodos[$loop->index]['time']}}</th>
                     <th>{{$periodos[$loop->index]['timeFinish']}}</th>
-                    <th>{{($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100}}</th>
-                    <th>{{($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100}}</th>
-                    {{-- <th>
-                      @if ((($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100)>80 && (($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100)<80 )
-                        <img src="{{ asset('img/logo.png') }}">
-                      @elseif ((($datoClase->total_calmado_movimiento/$datoClase->total_intervalos_movimiento)*100)<30 && (($datoClase->total_calmado_ritmo/$datoClase->total_intervalos_ritmo)*100)<30 )
-                        <img src="{{ asset('img/configuracion.png') }}">
-                      @else
-                        <img src="{{ asset('img/avatar.png') }}">
-                      @endif
+                    <th>{{$movimiento}}</th>
+                    <th>{{$ritmo}}</th>
+                    <th><div class=size>
+                      
+                      @if ( $movimiento > 90 && $ritmo > 90 )
+                        <img src="{{ asset('img/cinco.png') }}" style="width:40%">
+                      
 
-                    </th> --}}
+                      @elseif ( $movimiento > 70 && $ritmo > 70 )
+                        <img src="{{ asset('img/cuatro.png') }}" style="width:40%">
+
+                      @elseif ( $movimiento > 60 && $ritmo > 60 )
+                        <img src="{{ asset('img/tres.png') }}" style="width:40%">
+
+                      @elseif ( $movimiento > 50 && $ritmo > 50 )
+                        <img src="{{ asset('img/dos.png') }}" style="width:40%">
+
+                      @elseif ( $movimiento > 40 && $ritmo > 40 )
+                        <img src="{{ asset('img/una.png') }}" style="width:40%">
+
+                      @else
+                        <img src="{{ asset('img"cero.png') }}" style="width:40%">
+                      @endif
+                    </div>
+                    </th>
                     
                 </tr>
                 @endforeach
